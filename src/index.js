@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// global css
+import './assets/css/padding.css'
+import './assets/css/margin.css'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('gaanaworld')
 );
 
 // If you want to start measuring performance in your app, pass a function

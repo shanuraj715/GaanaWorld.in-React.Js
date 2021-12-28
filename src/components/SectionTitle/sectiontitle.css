@@ -1,0 +1,20 @@
+
+
+.section-title-cont{
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+    background-image: linear-gradient(to right, #B33771, #FD7272);
+    color: white;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 20px;
+}
+
+.sti{
+    padding: 5px 10px;
+    color: var(--light-green);
+}
+
+.section-title{
+    letter-spacing: 1px;
+}

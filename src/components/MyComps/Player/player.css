@@ -1,0 +1,10 @@
+
+.f-music-player{
+    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 100vw;
+    max-width: 100vw;
+    background-color: var(--light-black);
+    position: fixed;
+    top: 0;
+}

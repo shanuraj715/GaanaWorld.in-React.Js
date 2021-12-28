@@ -1,0 +1,64 @@
+.song-card {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    border-bottom: 1px solid var(--dark-blue);
+    text-decoration: none;
+    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+}
+
+.song-card:hover {
+    background-color: var(--hover);
+    border-color: var(--dark-red);
+}
+
+.song-card-logo {
+    font-size: 36px;
+    padding: 0 15px 0 0;
+    color: var(--dark-red);
+}
+
+.song-card-data {
+    width: 100%;
+    display: grid;
+}
+
+.song-card-st {
+    padding: 2px 0;
+    color: #487eb0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 18px;
+}
+
+.song-card-sd {
+    padding: 2px 0;
+    color: var(--light-black);
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.song-card-sd span {
+    border-right: 2px solid var(--dark-blue);
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.song-card:hover > .song-card-data .song-card-sd span{
+    border-right: 2px solid var(--dark-green);
+}
+
+.song-card:hover > .song-card-data .song-card-sd span:last-child{
+    border-right: none;
+}
+
+.song-card-sd span:last-child {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+}

@@ -1,0 +1,110 @@
+
+
+.other-features-cont{
+    padding-bottom: 15px;
+}
+
+.other-feature-links{
+    padding: 0 15px;
+    margin-top: 15px;
+}
+
+.custom-btn {
+    min-width: 150px;
+    min-height: 30px;
+    padding: 10px 25px;
+    border: 2px solid var(--dark-red);
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    margin: 10px 15px;
+    color: var(--dark-black);
+}
+
+.custom-btn:hover {
+    border-color: var(--dark-blue);
+}
+
+.btn-three {
+    line-height: 39px;
+    padding: 0;
+    text-decoration: none;
+}
+
+.btn-three:hover {
+    background: transparent;
+    color: var(--light-red);
+}
+
+.btn-three span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.btn-three:before,
+.btn-three:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: var(--dark-yellow);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.btn-three:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-three:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-three:hover:before {
+    height: 100%;
+}
+
+.btn-three:hover:after {
+    width: 100%;
+}
+
+.btn-three span:before,
+.btn-three span:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: var(--dark-yellow);
+    transition: all 0.3s ease;
+}
+
+.btn-three span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.btn-three span:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-three span:hover:before {
+    height: 100%;
+}
+
+.btn-three span:hover:after {
+    width: 100%;
+}

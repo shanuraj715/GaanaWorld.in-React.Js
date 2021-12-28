@@ -1,0 +1,19 @@
+/* amiens effect */
+.effect.amiens a {
+    transition: all 0.2s linear 0.2s;
+}
+
+.effect.amiens a i {
+    transition: all 0.2s linear 0s;
+}
+
+.effect.amiens a:hover {
+    transition: all 0.2s linear 0s;
+    border-color: rgba(33, 33, 33, 0);
+}
+
+.effect.amiens a:hover i {
+    transform: scale(1.15);
+    text-shadow: 4px 0px 3px rgba(33, 33, 33, 0.3);
+    transition: all 0.2s linear 0.2s;
+}

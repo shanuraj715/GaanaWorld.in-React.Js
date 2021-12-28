@@ -1,0 +1,31 @@
+
+
+.breadcrumb-cont{
+    background-color: var(--light-white);
+    border-bottom: solid 1px var(--dark-red);
+    padding: 6px 25px;
+}
+
+.breadcrumb-sap{
+    color: var(--dark-red);
+}
+
+a.breadcrumb-link{
+    text-decoration: none;
+    color: var(--light-blue);
+    cursor: pointer;
+}
+
+a.breadcrumb-link:hover{
+    color: var(--dark-red);
+}
+
+span.breadcrumb-link{
+    text-decoration: none;
+    color: var(--light-black);
+    cursor: pointer;
+}
+
+span.breadcrumb-link:hover{
+    color: var(--dark-green);
+}
