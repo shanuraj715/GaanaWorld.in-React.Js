@@ -1,3 +1,5 @@
+
+
 .footer-player-ph{
     height: 73px;
     max-height: 73px;
@@ -52,6 +54,22 @@
     -o-transform: scale(1.2);
 }
 
+
+#footer-player{
+    animation: footer-player-open-anim 0.4s cubic-bezier(0, 1.0, 0.4, 0.8);
+    -webkit-animation: footer-player-open-anim 0.4s cubic-bezier(0, 1.0, 0.4, 0.8);
+}
+
+@keyframes footer-player-open-anim {
+    from{
+        bottom: -60px;
+        opacity: 0;
+    }
+    to{
+        bottom: 0;
+        opacity: 1;
+    }
+}
 
 .music-player {
     background-color: var(--dark-black);
@@ -155,6 +173,7 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .mp-control-btn {

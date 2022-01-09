@@ -1,0 +1,217 @@
+
+
+.cf-block{
+    text-align: center;
+    margin: 40px auto;
+}
+
+.cf-cont{
+    text-align: initial;
+    border: solid 1px #dcdde1;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    min-width: 1100px;
+    max-width: 1300px;
+    margin: 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cf-left{
+    position: relative;
+    text-align: center;
+    width: 50%;
+    max-width: 50%;
+    padding: 10px;
+    overflow: hidden;
+    padding: 70px 10px;
+    height: 100%;
+    align-self: stretch;
+}
+
+.cf-left::before{
+    content: "";
+    background-color: #5479ec;
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    z-index: 1;
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.cf-left::after{
+    content: "";
+    background-image: radial-gradient(var(--dark-red), transparent, transparent);
+    position: absolute;
+    bottom: 20%;
+    right: 40%;
+    z-index: 1;
+    min-height: 20px;
+    max-height: 20px;
+    min-width: 20px;
+    max-width: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.cf-left-design{
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--dark-red);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.cf-left-design::before{
+    content: "";
+    position: absolute;
+    z-index: -10;
+    background-color: green;
+    min-width: 10%;
+    max-width: 10%;
+    display: inline-block;
+    top: 0;
+}
+
+.cf-left-title{
+    font-size: 52px;
+    color: #5479ec;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.cf-right{
+    width: 50%;
+    max-width: 50%;
+    padding: 70px 10px;
+    background-image: linear-gradient(to right, #213979, #213979);
+    align-self: stretch;
+    position: relative;
+    overflow: hidden;
+}
+
+.cf-right::before{
+    content: "";
+    background-color: #5479ec;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    z-index: 1;
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.cf-right::after{
+    content: "";
+    background-color: #3051b3;
+    position: absolute;
+    bottom: -55px;
+    right: -55px;
+    z-index: 1;
+    min-height: 130px;
+    max-height: 130px;
+    min-width: 130px;
+    max-width: 130px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.cf-r-ib{
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.cf-r-ib input{
+    width: 280px;
+    font-size: 20px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: solid 2px var(--dark-yellow);
+    font-family: monospace;
+}
+
+.cf-r-ib textarea{
+    width: 280px;
+    font-size: 20px;
+    padding: 6px 10px;
+    height: 100px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: solid 2px var(--dark-yellow);
+    resize: none;
+}
+
+
+
+.form-btn-cont{
+    text-align: center;
+    padding: 10px auto;
+    margin: 20px auto;
+}
+
+.form-submit-btn{
+    background-color: var(--dark-blue);
+    color: white;
+    outline: none;
+    border: solid 2px var(--dark-green);
+}
+
+.form-btn{
+    padding: 8px 15px;
+    font-size: 18px;
+    min-width: 150px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.cf-li{
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.cf-li img{
+    height: 400px;
+}

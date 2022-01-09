@@ -5,33 +5,20 @@ import { Link } from 'react-router-dom'
 
 export default class Breadcrumb extends Component {
 
-    data = [
-        {
-            title: "Category 1",
-            url: "/"
-        },
-        {
-            title: "Category 2",
-            url: "/"
-        },
-        {
-            title: "Category 3",
-            url: "/"
-        },
-        {
-            title: "Full Song Name",
-            url: ""
-        }
-    ]
+    data = []
 
-    breadcrumb = () => this.data.map((item, index) => {
+    generateUrl = (id) => {
+        return '/category/' + id
+    }
+
+    breadcrumb = () => this.props.data?.map((item, index) => {
         return (
-            item.url && item.url !== '' ? <React.Fragment key={ index }>
-                <Link to={item.url} className="breadcrumb-link">{item.title}</Link>
-                {index < this.data.length - 1 ? <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" /> : null}
+            item.id && (item.id !== '' && item.id !== '#') ? <React.Fragment key={ index }>
+                <Link to={ this.generateUrl(item.id)} className="breadcrumb-link">{item.title}</Link>
+                {index < this.props.data.length - 1 ? <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" /> : null}
             </React.Fragment> : <React.Fragment key={ index }>
                 <span className="breadcrumb-link">{item.title}</span>
-                {index < this.data.length - 1 ? <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" /> : null}
+                {index < this.props.data.length - 1 ? <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" /> : null}
             </React.Fragment>
         )
     })
@@ -39,7 +26,8 @@ export default class Breadcrumb extends Component {
     render() {
         return (
             <div className="breadcrumb-cont">
-                <Icon classes="fa-home" type="solid" />
+                <Link to="/"><Icon classes="fa-home" type="solid" /></Link>
+                <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" />
                 {this.data.length !== 0 ? <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" /> : null}
                 {this.breadcrumb()}
             </div>

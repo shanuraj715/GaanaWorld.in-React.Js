@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import conf from '../../conf'
-import { Link } from 'react-router-dom'
 import './footer.css'
 import sr from '../../assets/images/sr.jpg'
 import { Icon } from '../../components/Index'
@@ -30,13 +29,14 @@ export default class Footer extends Component {
                     <svg className="card__svg" viewBox="0 0 800 500">
 
                         <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333" />
-                        <path className="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent" />
+                        <path className="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" strokeWidth="3" fill="transparent" />
                     </svg>
 
                     <div className="card__content">
                         <h1 className="card__title">Shanu Raj</h1>
                         <p>I am a Full Stack Professional Web Developer.<br />
-                            {/* Contact me for website making.<br /> */}
+                            I am expert in <strong>HTML, CSS, JavaScript, jQuery, PHP, SQL, React Js, Express Js, Node Js, MongoDB, Python and Wordpress.</strong><br /><br />
+                            Contact me for website making.<br />
                             Mob: +91-9877936035</p>
                         <div className="effect varrius">
                             <div className="buttons">
@@ -69,7 +69,7 @@ export default class Footer extends Component {
         return (
             <div className="footer">
                 <p>
-                    <span>Copyright © {new Date().getFullYear()} | {conf.APP_NAME} </span>
+                    <span>Copyright © 2018 - {new Date().getFullYear()} | {conf.APP_NAME  + ' v-' + conf.VERSION} </span>
                     <span>- Developed By: <span onClick={this.toggleCardVisibility} className="footer-dev-name">Shanu Raj</span></span>
                 </p>
                 {this.state.cardVisible ? this.devCard() : null}

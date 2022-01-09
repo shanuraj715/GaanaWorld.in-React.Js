@@ -9,6 +9,9 @@ import CategoryCard from './CategoryCard/CategoryCard'
 import OtherFeatures from './OtherFeatures/OtherFeatures'
 import Pagination from './Pagination/Pagination'
 import Breadcrumb from './Breadcrumb/Breadcrumb'
+import Tags from './Tags/Tags'
+import SongSkeleton from './Skeleton/SongSkeleton'
+import CategorySkeleton from './Skeleton/CategorySkeleton'
 
 
 export {
@@ -22,5 +25,8 @@ export {
     CategoryCard,
     OtherFeatures,
     Pagination,
-    Breadcrumb
+    Breadcrumb,
+    Tags,
+    SongSkeleton,
+    CategorySkeleton
 }

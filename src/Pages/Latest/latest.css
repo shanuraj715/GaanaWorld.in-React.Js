@@ -3,3 +3,63 @@
 .latest-uploads{
     padding: 0 12px;
 }
+
+.pagination-btn-cont{
+    text-align: center;
+    margin: 20px auto;
+}
+
+.pagination-btn-cont span{
+    margin: 4px 5px;
+    padding: 8px 15px;
+    display: inline-block;
+    text-decoration: none;
+    border: solid 2px var(--dark-blue);
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    min-width: 40px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+.pagination-btn-cont a{
+    margin: 4px 5px;
+    padding: 8px 15px;
+    display: inline-block;
+    text-decoration: none;
+    border: solid 2px var(--dark-blue);
+    min-width: 50px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+.pagination-btn-cont a:hover{
+    border-color: var(--dark-red);
+}
+
+.pagination-btn-cont a:nth-child(1){
+    background-color: #c7ecee;
+}
+
+.pagination-btn-cont a:nth-child(2){
+    
+}
+
+.pagination-btn-cont a:nth-child(3){
+    
+}
+
+.pagination-btn-cont a:nth-child(4){
+
+}
+
+.pagination-btn-cont a:nth-child(5){
+    background-color: #c7ecee;
+}
