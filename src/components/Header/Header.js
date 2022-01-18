@@ -4,8 +4,16 @@ import Logo from '../../assets/images/site_title_image.png'
 import { Link, Redirect } from 'react-router-dom'
 import { Icon } from '../../components/Index'
 import toast from 'react-hot-toast'
+import conf from '../../conf'
+import Cookie from 'universal-cookie'
+
+const cookies = new Cookie()
 
 export default class Header extends Component {
+
+    componentDidMount() {
+
+    }
 
     handleKeyPress = event => {
         if (event.which === 13 && this.state.string !== '') {
@@ -24,10 +32,40 @@ export default class Header extends Component {
         }
     }
 
+    logout = () => {
+        fetch(conf.API_URL + 'user/logout', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                'sessid': cookies.get("PHPSESSID")
+            }
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                throw new Error("Error")
+            })
+            .then(json => {
+                console.log(json)
+                if (json.status) {
+                    window.location.reload()
+                }
+                else {
+
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     state = {
         string: '',
         redirectTo: ''
     }
+
+
     render() {
         return (
             <React.Fragment>
@@ -55,14 +93,25 @@ export default class Header extends Component {
                                 <Icon type="solid" classes="fa-user" />
                             </button>
                             <div className="header-um-dropdown">
-                                <span className="hdd-username">Shanu Raj</span>
+                                <span className="hdd-username">{this.props.userName || "*************"}</span>
+
+                                {this.props.isLogged ?
+                                    <>
+                                        <button className="hu-link">My Favorites</button>
+                                        <button className="hu-link">Profile Settings</button>
+                                        <button className="hu-link hu-logout" onClick={this.logout}>Logout</button>
+                                    </> : <>
+                                        <button className="header-drop-btn drop-btn-signin" onClick={() => this.props.toggleLoginFormVisibility()}>Sign In</button>
+                                        <button className="header-drop-btn drop-btn-signup">Sign Up</button>
+                                    </>}
+
                             </div>
                         </div>
 
 
                     </div>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 }

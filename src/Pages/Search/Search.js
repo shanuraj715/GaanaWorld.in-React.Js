@@ -113,7 +113,7 @@ export default class Search extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header {...this.props} />
         {!this.state.isLoading && this.state.data.length === 0 ?
           <>
             <div className="no-result-container">
@@ -142,6 +142,7 @@ export default class Search extends Component {
             })}
           </div>
           {/* <Pagination /> */}
+          { this.state.totalResults > this.state.perPageLimitResults ? 
           <div className="pagination-cont">
 
             <div className="pagination-btn-cont">
@@ -153,7 +154,7 @@ export default class Search extends Component {
                 {this.state.totalPages}
               </Link>
             </div>
-          </div>
+          </div> : null }
         </> : null}
         <OtherFeatures />
         <Footer />

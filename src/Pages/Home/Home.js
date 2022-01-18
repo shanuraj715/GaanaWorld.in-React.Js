@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 
 export default class Home extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         window.scrollTo(0, 0)
         this.fetchCategories()
     }
@@ -42,7 +42,7 @@ export default class Home extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Header {...this.props} />
                 <LatestUploads />
                 <div className="home-categories">
                     <Title iconClass="fa-guitar-electric" title="Music Categories" />

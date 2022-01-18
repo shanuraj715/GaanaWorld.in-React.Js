@@ -150,7 +150,7 @@ export default class CategoryList extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Header {...this.props} />
                 <Breadcrumb data={ this.state.breadcrumb }/>
                 {this.state.isLoadingCategories ? <CategorySkeleton count={8} /> : null}
                 {this.state.categories.length > 0 && this.state.pageNo === 1 ?
@@ -187,7 +187,7 @@ export default class CategoryList extends Component {
                                     <Link to={`${'/category/' + this.getCategoryId()}`}>1</Link>
                                     <Link to={`${'/category/' + this.getCategoryId() + '?page=' + (this.getPageNo() === 1 ? 1 : this.getPageNo() - 1)}`}>Prev</Link>
                                     <span>{this.getPageNo()}</span>
-                                    <Link to={`${'/category/' + this.getCategoryId() + (this.getPageNo() === this.state.totalPages ? '' : '?page=' + this.getPageNo() + 1)}`}>Next</Link>
+                                    <Link to={`${'/category/' + this.getCategoryId() + (this.getPageNo() === this.state.totalPages ? '' : '?page=' + (this.getPageNo() + 1))}`}>Next</Link>
                                     <Link to={`${'/category/' + this.getCategoryId() + '?page=' + this.state.totalPages}`}>{this.state.totalPages}</Link>
                                 </div>
                             </div> : null}

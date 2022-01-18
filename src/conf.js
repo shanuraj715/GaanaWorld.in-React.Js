@@ -7,6 +7,23 @@ const config = {
     LIMITS: {
         LATEST_UPLOADS: 18,
         SONG_LIMIT: 20
+    },
+    USERINFO: {
+        userName: null,
+        isLogged: false,
+        email: null,
+        userId: null
+    },
+    TOAST_INFO_STYLE: {
+        style: {
+            border: '2px solid var(--dark-blue)',
+            padding: '8px',
+            color: 'var(--dark-blue)',
+        },
+        iconTheme: {
+            primary: 'var(--dark-blue)',
+            secondary: 'white',
+        }
     }
 }
 

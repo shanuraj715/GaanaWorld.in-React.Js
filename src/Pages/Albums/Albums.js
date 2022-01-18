@@ -5,7 +5,7 @@ export default class Albums extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Header {...this.props} />
                 <Breadcrumb />
                 <div className="category-container">
                     <CategoryCard />

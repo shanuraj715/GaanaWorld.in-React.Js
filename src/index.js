@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import PointerFollower from './PointerFollower'
 
 // global css
 import './assets/css/padding.css'
@@ -11,6 +12,7 @@ import './assets/css/margin.css'
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {/* <PointerFollower /> */}
   </React.StrictMode>,
   document.getElementById('gaanaworld')
 )

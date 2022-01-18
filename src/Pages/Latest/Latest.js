@@ -54,7 +54,7 @@ export default class Latest extends Component {
 
     fetchLatestUploads() {
         let offset = (this.getPageNo() * conf.LIMITS.SONG_LIMIT) - conf.LIMITS.SONG_LIMIT
-        fetch(conf.API_URL + '/latest-uploads?order=song_id&by=desc&limit=' + conf.LIMITS.SONG_LIMIT + '&offset=' + offset, {
+        fetch(conf.API_URL + '/latest?order=song_id&by=desc&limit=' + conf.LIMITS.SONG_LIMIT + '&offset=' + offset, {
             method: 'get',
             headers: { 'Content-Type': 'application/json' }
         })
@@ -90,7 +90,7 @@ export default class Latest extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header {...this.props} />
                 <Title iconClass="fa-music" title="Latest Uploads" />
                 <div className="latest-uploads">
                     {this.state.isLoading ? <SongSkeleton count={20} /> : this.state.list?.map((item, index) => {

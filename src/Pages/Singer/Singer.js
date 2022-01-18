@@ -5,7 +5,7 @@ export default class Singer extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Header {...this.props} />
                 <Breadcrumb />
                 <div className="songs-container">
                     <SongCard />

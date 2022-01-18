@@ -6,7 +6,7 @@ export default class ShowAlbum extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Header {...this.props} />
                 <Breadcrumb />
                 <div className="songs-container">
                     <SongCard />

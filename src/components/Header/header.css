@@ -1,6 +1,4 @@
-
-
-.header{
+.header {
     display: flex;
     background-color: var(--dark-black);
     color: var(--light-white);
@@ -9,45 +7,67 @@
     align-items: center;
 }
 
-.header-left{
+.header-left {
     display: flex;
     flex-direction: column;
 }
 
-.header-left img{
+.header-left img {
     width: 330px;
 
 }
 
-.header-left span{
+.header-left span {
     font-family: 'Yeon Sung', cursive;
     padding: 0 20px;
     font-size: 18px;
 }
 
-.header-center{
+.header-center {
     text-align: right;
     flex-grow: 1;
     margin: auto 40px;
 }
 
-.header-right{
+.header-right {
     text-align: end;
     padding-left: 10px;
     padding-right: 2%;
 }
 
-.header-user-navbar{
+.header-user-navbar {
     position: relative;
 }
 
-.header-user-navbar:hover > .header-um-dropdown{
+.header-user-navbar:hover>.header-um-dropdown {
     display: initial;
     visibility: visible;
     opacity: 1;
+    animation: xx 1s linear;
+    -webkit-animation: header-drop-anim 0.15s ease-in;
 }
 
-.header-user-btn{
+@keyframes header-drop-anim {
+    from {
+        transform: translateY(10px);
+        -webkit-transform: translateY(10px);
+        -moz-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+        -o-transform: translateY(10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.header-user-btn {
     background-color: var(--light-blue);
     padding: 11px;
     border-radius: 50%;
@@ -63,7 +83,7 @@
     cursor: pointer;
 }
 
-.header-um-dropdown{
+.header-um-dropdown {
     display: none;
     opacity: 0;
     visibility: hidden;
@@ -83,7 +103,7 @@
     -o-border-radius: 5px;
 }
 
-.header-um-dropdown::before{
+.header-um-dropdown::before {
     content: '';
     min-width: 16px;
     max-width: 16px;
@@ -109,7 +129,7 @@
     -o-border-radius: 5px;
 }
 
-.header-um-dropdown::after{
+.header-um-dropdown::after {
     content: '';
     min-width: 100%;
     height: 30px;
@@ -120,12 +140,14 @@
     top: -30px;
 }
 
-.hdd-username{
+.hdd-username {
     color: var(--dark-blue);
     font-weight: bold;
     padding-bottom: 10px;
     border-bottom: solid 2px var(--dark-red);
     display: block;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 
@@ -133,29 +155,29 @@
 
 
 
-.header-search-cont{
+.header-search-cont {
     position: relative;
     overflow: hidden;
 }
 
-.header-search-cont input{
+.header-search-cont input {
     padding: 8px 10px;
     padding-right: 45px;
     font-size: 16px;
     border: none;
     outline: none;
-    border-radius:5px;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    -ms-border-radius:5px;
-    -o-border-radius:5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
     min-width: 300px;
     letter-spacing: 1px;
     background-color: var(--dark-white);
     font-family: 'Courgette', cursive;
 }
 
-.header-search-cont button{
+.header-search-cont button {
     padding: 9px 12px;
     border: none;
     outline: none;
@@ -169,4 +191,43 @@
     -o-border-radius: 5px;
     font-size: 16px;
     color: var(--dark-red);
+}
+
+.hu-link{
+    padding: 12px 15px;
+    width: 100%;
+    margin: 5px 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: solid 1px var(--dark-black);
+    text-align: initial;
+    cursor: pointer;
+}
+
+.hu-logout:hover{
+    background-color: #ff4757 !important;
+}
+
+.hu-link:hover{
+    background-color: #2362af;
+    color: white;
+}
+
+.header-drop-btn{
+    width: 100%;
+    margin: 5px 0;
+    padding: 15px;
+    border: solid 2px var(--dark-yellow);
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.drop-btn-signin{
+    background-color: #1dd1a1;
+}
+
+.drop-btn-signup{
+    background-color: var(--dark-blue);
 }

@@ -13,8 +13,9 @@ import SongDetail from './components/SongDetail/SongDetail'
 import './song.css'
 import SongShare from './components/SongShare/SongShare'
 import conf from '../../conf'
-import func from '../../assets/js/functions'
 import ReactTooltip from 'react-tooltip';
+import toast from 'react-hot-toast'
+import GraphComment from './components/GraphComment/GraphComment'
 
 export default class Song extends Component {
 
@@ -23,7 +24,8 @@ export default class Song extends Component {
         song_data: {},
         tags: [],
         related_files: [],
-        breadcrumb: []
+        breadcrumb: [],
+        songId: null
     }
 
     constructor(props) {
@@ -32,6 +34,9 @@ export default class Song extends Component {
     }
 
     componentDidMount() {
+        this.setState({
+            songId: this.getSongId()
+        })
         this.fetchData()
     }
 
@@ -46,6 +51,9 @@ export default class Song extends Component {
         pathname = pathname.split('/')[2];
         prevPathname = prevPathname.split('/')[2];
         if (this.props.location.pathname && pathname !== prevPathname) {
+            this.setState({
+                songId: this.getSongId()
+            })
             this.fetchData()
             window.scrollTo(0, 0)
         }
@@ -73,7 +81,7 @@ export default class Song extends Component {
                 throw new Error("Error")
             })
             .then(json => {
-                console.log( json )
+                console.log(json)
                 this.setState({
                     song_data: {
                         thumb: json.data.thumb,
@@ -128,21 +136,25 @@ export default class Song extends Component {
     }
 
     audioPlayHandler = () => {
-        this.props.updateSid(parseInt(this.state.song_data.songId))
+        if (this.state.song_data.songId)
+            this.props.updateSid(parseInt(this.state.song_data.songId))
+        else
+            toast.error("Loading Data. Please wait...", { position: 'bottom-left' })
+
     }
 
     render() {
         return (
             <>
-                <Header />
-                <Breadcrumb data={ this.state.breadcrumb } />
+                <Header {...this.props} />
+                <Breadcrumb data={this.state.breadcrumb} />
                 <SongDetail data={this.state.song_data} />
                 <div className="sd-btns-cont">
                     <button className="custom-btn btn-15" onClick={this.audioPlayHandler}>
                         <Icon classes="fa-play pd-r-10" type="solid" />
                         Play Now
                     </button>
-                    <button className="custom-btn btn-15" onClick={ this.download }>
+                    <button className="custom-btn btn-15" onClick={this.download}>
                         <Icon classes="fa-download pd-r-10" type="solid" />
                         Download
                     </button>
@@ -166,9 +178,10 @@ export default class Song extends Component {
                         )}
                     </div>
                 </div>
+                <Title iconClass="fa-comment" title="Comments" />
+                <GraphComment key={this.state.songId} />
                 <OtherFeatures />
                 <Footer />
-
                 <ReactTooltip type="info" effect="float" />
                 <SongShare toggle={this.toggleSongShareModal} url="" short_url={conf.APP_URL + 's/' + this.state.song_data.short_url} />
             </>

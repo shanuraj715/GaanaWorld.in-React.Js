@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { Header, Footer, Icon, OtherFeatures, Breadcrumb } from '../../../components/Index'
+import { Header, Footer, Icon, OtherFeatures, Breadcrumb, Login } from '../../../components/Index'
 import './contactus.css'
 import ci from '../../../assets/images/contact-us.svg'
 
 export default class ContactUs extends Component {
+
     render() {
         return (
             <React.Fragment>
-                <Header />
-                <Breadcrumb />
+                <Header {...this.props} />
+                <Breadcrumb data={[{title: "Contact Us", url: '#' }]} />
                 <div className="cf-block">
                     <div className="cf-cont">
                         <div className="cf-left">

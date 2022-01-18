@@ -8,8 +8,8 @@ export default class AboutUs extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
-                <Breadcrumb />
+                <Header {...this.props} />
+                <Breadcrumb data={[{title: "About Us", url: '#' }]} />
                 <div className="cf-block">
                     <div className="cf-cont">
                         <div className="cf-left">

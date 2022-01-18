@@ -13,6 +13,9 @@ import Tags from './Tags/Tags'
 import SongSkeleton from './Skeleton/SongSkeleton'
 import CategorySkeleton from './Skeleton/CategorySkeleton'
 
+import Login from './Login/Login'
+import Register from './Register/Register'
+
 
 export {
     Icon,
@@ -28,5 +31,8 @@ export {
     Breadcrumb,
     Tags,
     SongSkeleton,
-    CategorySkeleton
+    CategorySkeleton,
+
+    Login, 
+    Register
 }

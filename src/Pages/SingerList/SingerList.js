@@ -6,7 +6,7 @@ export default class SingerList extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Header {...this.props} />
                 <Breadcrumb />
                 <div className="catgory-container">
                     <CategoryCard />
