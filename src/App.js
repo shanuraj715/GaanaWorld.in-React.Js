@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import { FooterPlayer, Player, Login } from './components/Index'
+import { FooterPlayer, Login } from './components/Index'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import conf from './conf'
 import {
@@ -151,16 +151,17 @@ export class App extends Component {
 
         {this.state.isPlaying ?
           <BrowserRouter>
-            {this.state.fullScreenPlayer ? <Player /> : <FooterPlayer
+            <FooterPlayer
               song_id={this.state.sid}
               toggleFullScreen={this.toggleFullScreenPlayer}
               {...this.commonProps()}
-            />}
+            />
           </BrowserRouter>
           : null
         }
         <BrowserRouter>
-          {this.state.loginVisible ? <Login hide={() => this.setState({loginVisible: false})} /> : null}
+          {this.state.loginVisible ? <Login hide={() => this.setState({ loginVisible: false })} /> : null}
+          
         </BrowserRouter>
         <Toaster />
       </React.Fragment>

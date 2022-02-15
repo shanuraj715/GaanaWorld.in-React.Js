@@ -1,6 +1,6 @@
 import Icon from './FontAwesome/FontAwesome'
 import FooterPlayer from './MyComps/FooterPlayer/FooterPlayer'
-import Player from './MyComps/Player/Player'
+// import Player from './MyComps/Player/Player'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import Title from './SectionTitle/SectionTitle'
@@ -21,7 +21,7 @@ export {
     Icon,
     Title,
     FooterPlayer,
-    Player,
+    // Player,
     Header,
     Footer,
     SongCard,

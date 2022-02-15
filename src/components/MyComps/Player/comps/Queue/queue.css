@@ -1,0 +1,83 @@
+
+.fp1-queue-cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 28vw;
+    width: 28vw;
+    max-width: 28vw;
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color: #ecf0f1;
+    padding: 15px 0;
+    box-shadow: 0 0 100px rgba(83, 92, 104, 0.4);
+}
+
+.queue-opened {
+    animation: queue-open 1s forwards;
+    -webkit-animation: queue-open 1s forwards;
+}
+
+@keyframes queue-open {
+    from {
+        left: -28vw;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+.queue-closed {
+    animation: queue-close 1s forwards;
+    -webkit-animation: queue-close 1s forwards;
+}
+
+@keyframes queue-close {
+
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -28vw;
+    }
+}
+
+.fp1-queue-btn-cont {
+    font-size: 22px;
+    display: flex;
+    padding: 10px;
+    border-bottom: solid 1px var(--dark-black);
+}
+
+.fp1-queue-title {
+    flex-grow: 2;
+    font-weight: bold;
+    color: var(--dark-green);
+}
+
+.queue-list-cont {
+    padding: 20px 0 5px 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px);
+}
+
+.player-song-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--dark-blue);
+    text-decoration: none;
+    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+}
+
+.fp1-queue-btn {
+    cursor: pointer;
+    position: absolute;
+    right: -40px;
+}

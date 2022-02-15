@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './footerplayer.css'
 import './song-bars.css'
 
+import Player from '../Player/Player'
 import ReactTooltip from 'react-tooltip';
 import { Icon, Login } from '../../../components/Index'
 import func from '../../../assets/js/functions'
@@ -11,7 +12,7 @@ import toast from 'react-hot-toast'
 import { reactLocalStorage } from 'reactjs-localstorage';
 import Cookie from 'universal-cookie'
 import adholder from '../../../assets/images/320x50.png'
-import Player from '../Player/Player'
+import './full-player.css'
 
 const cookies = new Cookie()
 
@@ -27,7 +28,9 @@ export default class FooterPlayer extends Component {
 		currentTime: 0,
 		muted: false,
 		loginVisible: false,
-		isFavorite: false
+		isFavorite: false,
+
+		isExpanded: false
 	}
 
 	constructor(props) {
@@ -97,13 +100,17 @@ export default class FooterPlayer extends Component {
 		})
 	}
 
+	toggleExpand = () => {
+		this.setState({
+			isExpanded: !this.state.isExpanded
+		})
+	}
 
 	render() {
 		return (
 			<React.Fragment>
-				{/* <Player /> */}
 				<div className="footer-player-ph"></div>
-
+				{ !this.state.isExpanded ? 
 				<div className="music-player" id="footer-player">
 					<div className="mp-seek">
 						<input data-for="scrubber-inp" data-tip type="range" min="0" max={this.state.maxScrubberVal || 0} id="scrubber" onChange={e => this.seek(e.target.value)} />
@@ -178,11 +185,13 @@ export default class FooterPlayer extends Component {
 						</span> */}
 						<img src={adholder} alt="" />
 
-						<span data-tip="Full Screen" className="mp-expand-btn">
+						<span data-tip="Full Screen" className="mp-expand-btn" onClick={ this.toggleExpand }>
 							<Icon classes="fa-expand" type="regular" />
 						</span>
 					</div>
-				</div>
+				</div> : 
+
+				<Player {...this.allMethods } { ...this.state } /> }
 				{this.state.loginVisible ? <Login hide={() => this.setState({ loginVisible: false })} /> : null}
 				<ReactTooltip type="info" effect="float" />
 			</React.Fragment>
@@ -313,6 +322,23 @@ export default class FooterPlayer extends Component {
 				iconTheme: { primary: 'var(--dark-red)', secondary: '#FFFAEE' },
 			})
 		})
+	}
+
+	allMethods = {
+		scrubber: this.scrubber,
+		volumeChange: this.volumeChange,
+		setAudio: this.setAudio,
+		playNewAudio: this.playNewAudio,
+		play: this.play,
+		pause: this.pause,
+		mute: this.mute,
+		toggle: this.toggle,
+		stop: this.stop,
+		seek: this.seek,
+		repeat: this.repeat,
+		markAsFav: this.markAsFav,
+		download: this.download,
+		copyLinkToClipboard: this.copyLinkToClipboard
 	}
 
 	markAsFav = () => {
