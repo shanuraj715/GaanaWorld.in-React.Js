@@ -30,7 +30,8 @@ export default class FooterPlayer extends Component {
 		loginVisible: false,
 		isFavorite: false,
 		playingSongData: {},
-		isExpanded: false
+		isExpanded: false,
+		favList: [],
 	}
 
 	constructor(props) {
@@ -60,6 +61,10 @@ export default class FooterPlayer extends Component {
 		scrubber.addEventListener('mousemove', this.scrubber)
 		this.playNewAudio(this.props.song_id)
 		window.addEventListener('keyup', e => this.listenKeys(e))
+
+		if (this.props.isLogged) {
+			this.fetchFavSongList()
+		}
 	}
 
 	componentDidUpdate(prevProps) {
@@ -110,90 +115,90 @@ export default class FooterPlayer extends Component {
 		return (
 			<React.Fragment>
 				<div className="footer-player-ph"></div>
-				{ !this.state.isExpanded ? 
-				<div className="music-player" id="footer-player">
-					<div className="mp-seek">
-						<input data-for="scrubber-inp" data-tip type="range" min="0" max={this.state.maxScrubberVal || 0} id="scrubber" onChange={e => this.seek(e.target.value)} />
-						<ReactTooltip id='scrubber-inp' type='dark' effect='float'>
-							<span>{this.scrubberMinSecStr(Math.ceil(this.state.scrubberTooltipVal))}</span>
-						</ReactTooltip>
-					</div>
-					<div className="mp-left">
-						<div className="mp3-icon-cont">
-							{/* <Icon type="solid" classes="fas fa-music mp-footer-icon" /> */}
-							<div className="mp-bars"></div>
-						</div>
-						<div className="song-data">
-							<span className="mp-song-title" data-for="stitle" data-tip>{this.state.playingSongData?.title}</span>
-							{/* <span className="mp-song-details">{this.state.playingSongData?.total_downloads} Downloads</span> */}
-							<span className="mp-song-details" data-tip={this.props.isLogged ? "Next song." : 'Login'} >
-								{this.props.isLogged ? "Next song name here" : 'Login to get favourite tracks.'}
-							</span>
-							<ReactTooltip id='stitle' type='dark' effect='solid'>
-								<span>{this.state.playingSongData?.title}</span>
+				{!this.state.isExpanded ?
+					<div className="music-player" id="footer-player">
+						<div className="mp-seek">
+							<input data-for="scrubber-inp" data-tip type="range" min="0" max={this.state.maxScrubberVal || 0} id="scrubber" onChange={e => this.seek(e.target.value)} />
+							<ReactTooltip id='scrubber-inp' type='dark' effect='float'>
+								<span>{this.scrubberMinSecStr(Math.ceil(this.state.scrubberTooltipVal))}</span>
 							</ReactTooltip>
 						</div>
-						<div className="mp-left-btn-cont">
-							<span data-tip={`${this.state.isFavorite ? "Remove from favourites" : "Add to favourites"}`} className="mp-left-btn mp-fav-btn" onClick={this.markAsFav}>
-								<Icon type={`${this.state.isFavorite ? 'solid' : 'regular'}`} classes="fa-heart" />
-							</span>
-							<span data-tip="Download this song." className="mp-left-btn mp-download-btn" onClick={this.download}>
-								<Icon type="regular" classes="fa-download" />
-							</span>
-						</div>
-					</div>
-					<div className="mp-center">
-						<div className="mp-time">
-							<span id="current-time" className="mp-current-time" data-tip="Current Time">{playerFunc.secToMinSec(this.state.currentTime).min + ":" + playerFunc.secToMinSec(this.state.currentTime).sec}</span>
-							<span> / </span>
-							<span className="mp-duration-time" data-tip="Total Duration">{playerFunc.secToMinSec(this.state.maxScrubberVal).min + ":" + playerFunc.secToMinSec(this.state.maxScrubberVal).sec}</span>
-						</div>
-
-						<span className="mp-control-btn" onClick={this.repeat}>
-							<Icon classes={this.state.isRepeating ? 'fa-repeat-1-alt' : 'fa-repeat'} type="regular" />
-						</span>
-
-						<span className="mp-control-btn">
-							<Icon classes="fa-angle-double-left" type="regular" />
-						</span>
-
-						<span className="mp-control-btn mp-play-btn" onClick={this.toggle}>
-							<Icon classes={`${this.state.playing ? 'fa-pause' : 'fa-play'}`} type="regular" />
-						</span>
-
-						<span className="mp-control-btn">
-							<Icon classes="fa-angle-double-right" type="regular" />
-						</span>
-
-						<span className="mp-control-btn" data-tip="Copy link (Ctrl + c)" onClick={this.copyLinkToClipboard}>
-							<Icon classes="fa-link" type="regular" />
-						</span>
-
-						<span className="mp-control-btn mp-volume-btn">
-							<div className="mp-vc-cont">
-								<input data-tip data-for="vol-cont-tip" id="volume-controller" type="range" className="mp-vc" min="0" max="100" value={this.state.volume} onChange={e => this.volumeChange(e)} />
+						<div className="mp-left">
+							<div className="mp3-icon-cont">
+								{/* <Icon type="solid" classes="fas fa-music mp-footer-icon" /> */}
+								<div className="mp-bars"></div>
 							</div>
-							<ReactTooltip id='vol-cont-tip' type='info' effect='solid'>
-								<span>{this.state.volume}</span>
-							</ReactTooltip>
-							<span onClick={this.mute}><Icon classes={`${this.state.muted ? 'fa-volume-slash' : 'fa-volume-up'}`} type="regular" /></span>
-						</span>
-					</div>
-					<div className="mp-right">
-						{/* <span data-tip={ this.props.isLogged ? "Next song." : 'Login'} className="mp-next-song">
+							<div className="song-data">
+								<span className="mp-song-title" data-for="stitle" data-tip>{this.state.playingSongData?.title}</span>
+								{/* <span className="mp-song-details">{this.state.playingSongData?.total_downloads} Downloads</span> */}
+								<span className="mp-song-details" data-tip={this.props.isLogged ? "Next song." : 'Login'} >
+									{this.props.isLogged ? "Next song name here" : 'Login to get favourite tracks.'}
+								</span>
+								<ReactTooltip id='stitle' type='dark' effect='solid'>
+									<span>{this.state.playingSongData?.title}</span>
+								</ReactTooltip>
+							</div>
+							<div className="mp-left-btn-cont">
+								<span data-tip={`${this.state.isFavorite ? "Remove from favourites" : "Add to favourites"}`} className="mp-left-btn mp-fav-btn" onClick={this.markAsFav}>
+									<Icon type={`${this.state.isFavorite ? 'solid' : 'regular'}`} classes="fa-heart" />
+								</span>
+								<span data-tip="Download this song." className="mp-left-btn mp-download-btn" onClick={this.download}>
+									<Icon type="regular" classes="fa-download" />
+								</span>
+							</div>
+						</div>
+						<div className="mp-center">
+							<div className="mp-time">
+								<span id="current-time" className="mp-current-time" data-tip="Current Time">{playerFunc.secToMinSec(this.state.currentTime).min + ":" + playerFunc.secToMinSec(this.state.currentTime).sec}</span>
+								<span> / </span>
+								<span className="mp-duration-time" data-tip="Total Duration">{playerFunc.secToMinSec(this.state.maxScrubberVal).min + ":" + playerFunc.secToMinSec(this.state.maxScrubberVal).sec}</span>
+							</div>
+
+							<span className="mp-control-btn" onClick={this.repeat}>
+								<Icon classes={this.state.isRepeating ? 'fa-repeat-1-alt' : 'fa-repeat'} type="regular" />
+							</span>
+
+							<span className="mp-control-btn">
+								<Icon classes="fa-angle-double-left" type="regular" />
+							</span>
+
+							<span className="mp-control-btn mp-play-btn" onClick={this.toggle}>
+								<Icon classes={`${this.state.playing ? 'fa-pause' : 'fa-play'}`} type="regular" />
+							</span>
+
+							<span className="mp-control-btn">
+								<Icon classes="fa-angle-double-right" type="regular" />
+							</span>
+
+							<span className="mp-control-btn" data-tip="Copy link (Ctrl + c)" onClick={this.copyLinkToClipboard}>
+								<Icon classes="fa-link" type="regular" />
+							</span>
+
+							<span className="mp-control-btn mp-volume-btn">
+								<div className="mp-vc-cont">
+									<input data-tip data-for="vol-cont-tip" id="volume-controller" type="range" className="mp-vc" min="0" max="100" value={this.state.volume} onChange={e => this.volumeChange(e)} />
+								</div>
+								<ReactTooltip id='vol-cont-tip' type='info' effect='solid'>
+									<span>{this.state.volume}</span>
+								</ReactTooltip>
+								<span onClick={this.mute}><Icon classes={`${this.state.muted ? 'fa-volume-slash' : 'fa-volume-up'}`} type="regular" /></span>
+							</span>
+						</div>
+						<div className="mp-right">
+							{/* <span data-tip={ this.props.isLogged ? "Next song." : 'Login'} className="mp-next-song">
 							{ this.props.isLogged ? "Next song name here" : 'Login to get favourite tracks.'}
 						</span> */}
-						<img src={adholder} alt="" />
+							<img src={adholder} alt="" />
 
-						<span data-tip="Full Screen" className="mp-expand-btn" onClick={ this.toggleExpand }>
-							<Icon classes="fa-expand" type="regular" />
-						</span>
-					</div>
-				</div> : 
+							<span data-tip="Full Screen" className="mp-expand-btn" onClick={this.toggleExpand}>
+								<Icon classes="fa-expand" type="regular" />
+							</span>
+						</div>
+						<ReactTooltip type="info" effect="float" />
+					</div> :
 
-				<Player {...this.allMethods } { ...this.state } /> }
+					<Player {...this.allMethods} {...this.state} {...this.props} />}
 				{this.state.loginVisible ? <Login hide={() => this.setState({ loginVisible: false })} /> : null}
-				<ReactTooltip type="info" effect="float" />
 			</React.Fragment>
 		)
 	}
@@ -324,26 +329,9 @@ export default class FooterPlayer extends Component {
 		})
 	}
 
-	allMethods = {
-		scrubber: this.scrubber,
-		volumeChange: this.volumeChange,
-		setAudio: this.setAudio,
-		playNewAudio: this.playNewAudio,
-		play: this.play,
-		pause: this.pause,
-		mute: this.mute,
-		toggle: this.toggle,
-		stop: this.stop,
-		seek: this.seek,
-		repeat: this.repeat,
-		markAsFav: this.markAsFav,
-		download: this.download,
-		copyLinkToClipboard: this.copyLinkToClipboard
-	}
-
 	markAsFav = () => {
 		if (this.props.isLogged) {
-			fetch(conf.API_URL + 'favourite?sid=' + this.props.song_id, {
+			fetch(conf.API_URL + 'favourite?sid=' + this.state.playingSongData.song_id, {
 				method: 'get',
 				headers: {
 					"Content-Type": 'application/json',
@@ -351,9 +339,7 @@ export default class FooterPlayer extends Component {
 				}
 			})
 				.then(res => {
-					if (res.ok) {
-						return res.json()
-					}
+					if (res.ok) return res.json()
 					throw new Error("Error")
 				})
 				.then(json => {
@@ -375,6 +361,7 @@ export default class FooterPlayer extends Component {
 								});
 							})
 						}
+						this.fetchFavSongList()
 					}
 				})
 				.catch(err => {
@@ -395,6 +382,51 @@ export default class FooterPlayer extends Component {
 	copyLinkToClipboard = () => {
 		func.copyToClipboard(conf.APP_URL + 's/' + this.state.playingSongData.short_url)
 		toast.success("Link copied to clipboard.", { position: 'bottom-left' })
+	}
+
+	fetchFavSongList = () => {
+		fetch(conf.API_URL + 'favList', {
+			method: 'get',
+			headers: {
+				'Content-Type': 'application/json',
+				'sessid': cookies.get("PHPSESSID")
+			}
+		})
+			.then(res => {
+				if (res.ok) return res.json()
+				throw new Error("Error");
+			})
+			.then(json => {
+				console.log(json)
+				if (json.status) {
+					this.setState({ favList: json.data })
+				}
+				else {
+					toast.error(json.error.message, { position: 'bottom-left' })
+				}
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+
+	allMethods = {
+		scrubber: this.scrubber,
+		volumeChange: this.volumeChange,
+		setAudio: this.setAudio,
+		playNewAudio: this.playNewAudio,
+		play: this.play,
+		pause: this.pause,
+		mute: this.mute,
+		toggle: this.toggle,
+		stop: this.stop,
+		seek: this.seek,
+		repeat: this.repeat,
+		markAsFav: this.markAsFav,
+		download: this.download,
+		copyLink: this.copyLinkToClipboard,
+		togglePlayer: this.toggleExpand,
+		updateFavSongs: this.fetchFavSongList
 	}
 
 	listenKeys = e => {

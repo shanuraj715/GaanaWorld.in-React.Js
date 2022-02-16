@@ -6,7 +6,7 @@ import './queue.css'
 export default class Queue extends Component {
 
     state = {
-        queue_visible: false
+        queue_visible: null
     }
 
     toggleQueue = () => {
@@ -19,13 +19,13 @@ export default class Queue extends Component {
     render() {
         return <OutsideClickHandler
             onOutsideClick={this.state.queue_visible ? this.toggleQueue : () => {}}>
-            <div className={'fp1-queue-cont ' + `${this.state.queue_visible ? "queue-opened" : 'queue-closed'}`}>
+            <div className={'fp1-queue-cont ' + `${this.state.queue_visible === null ? "" : this.state.queue_visible ? "queue-opened" : 'queue-closed'}`}>
                 <div className="fp1-queue-btn-cont">
                     <span className="fp1-queue-title">
                         <Icon classes="fa-list pd-r-10" type="regular" />Queue
                     </span>
                     <span className="fp1-queue-btn" onClick={this.toggleQueue}>
-                        <Icon classes={`${this.state.queue_visible ? "fa-chevron-double-left" : "fa-chevron-double-right"}`} type="duotone" color1="var(--dark-green)" color2="var(--light-green)" />
+                        <Icon classes={`${this.state.queue_visible ? "fa-chevron-double-left" : "fa-chevron-double-right"}`} type="duotone" color1="var(--dark-blue)" color2="var(--light-red)" />
                     </span>
                 </div>
                 <div className="queue-list-cont">
