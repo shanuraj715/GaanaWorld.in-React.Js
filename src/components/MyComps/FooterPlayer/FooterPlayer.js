@@ -29,7 +29,7 @@ export default class FooterPlayer extends Component {
 		muted: false,
 		loginVisible: false,
 		isFavorite: false,
-
+		playingSongData: {},
 		isExpanded: false
 	}
 

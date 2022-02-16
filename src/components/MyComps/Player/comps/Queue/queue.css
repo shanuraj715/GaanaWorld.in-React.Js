@@ -2,25 +2,27 @@
 .fp1-queue-cont {
     position: absolute;
     top: 0;
-    left: 0;
-    min-width: 28vw;
-    width: 28vw;
-    max-width: 28vw;
+    left: -400px;
+    min-width: 400px;
+    width: 400px;
+    max-width: 400px;
     min-height: 100vh;
     max-height: 100vh;
     background-color: #ecf0f1;
     padding: 15px 0;
     box-shadow: 0 0 100px rgba(83, 92, 104, 0.4);
+    border-right: solid 2px var(--dark-red);
+    z-index: 2500;
 }
 
 .queue-opened {
-    animation: queue-open 1s forwards;
-    -webkit-animation: queue-open 1s forwards;
+    animation: queue-open 0.5s forwards;
+    -webkit-animation: queue-open 0.5s forwards;
 }
 
 @keyframes queue-open {
     from {
-        left: -28vw;
+        left: -400px;
     }
 
     to {
@@ -29,8 +31,8 @@
 }
 
 .queue-closed {
-    animation: queue-close 1s forwards;
-    -webkit-animation: queue-close 1s forwards;
+    animation: queue-close 0.5s forwards;
+    -webkit-animation: queue-close 0.5s forwards;
 }
 
 @keyframes queue-close {
@@ -40,7 +42,7 @@
     }
 
     to {
-        left: -28vw;
+        left: -400px;
     }
 }
 
