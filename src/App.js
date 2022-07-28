@@ -161,7 +161,7 @@ export class App extends Component {
         }
         <BrowserRouter>
           {this.state.loginVisible ? <Login hide={() => this.setState({ loginVisible: false })} /> : null}
-          
+
         </BrowserRouter>
         <Toaster />
       </React.Fragment>

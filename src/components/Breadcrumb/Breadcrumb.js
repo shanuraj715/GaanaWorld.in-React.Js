@@ -13,10 +13,10 @@ export default class Breadcrumb extends Component {
 
     breadcrumb = () => this.props.data?.map((item, index) => {
         return (
-            item.id && (item.id !== '' && item.id !== '#') ? <React.Fragment key={ index }>
-                <Link to={ this.generateUrl(item.id)} className="breadcrumb-link">{item.title}</Link>
+            item.id && (item.id !== '' && item.id !== '#') ? <React.Fragment key={index}>
+                <Link to={this.generateUrl(item.id)} className="breadcrumb-link">{item.title}</Link>
                 {index < this.props.data.length - 1 ? <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" /> : null}
-            </React.Fragment> : <React.Fragment key={ index }>
+            </React.Fragment> : <React.Fragment key={index}>
                 <span className="breadcrumb-link">{item.title}</span>
                 {index < this.props.data.length - 1 ? <Icon classes="fa-chevron-right mg-lr-10 breadcrumb-sap" type="solid" /> : null}
             </React.Fragment>
